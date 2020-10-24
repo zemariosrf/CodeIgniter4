@@ -395,8 +395,9 @@ class Toolbar
 
 			if (strpos($response->getBody(), '<head>') !== false)
 			{
+				$count = 1;
 				$response->setBody(
-						str_replace('<head>', '<head>' . $script, $response->getBody())
+					preg_replace('<head>', '<head>' . $script, $response->getBody(), 1)
 				);
 
 				return;
